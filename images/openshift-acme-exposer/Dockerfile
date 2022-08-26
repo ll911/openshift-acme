@@ -3,6 +3,6 @@ WORKDIR /go/src/github.com/tnozicka/openshift-acme
 COPY . .
 RUN make build --warn-undefined-variables
 
-FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.6-902
 COPY --from=builder /go/src/github.com/tnozicka/openshift-acme/openshift-acme-exposer /usr/bin/openshift-acme-exposer
 ENTRYPOINT ["/usr/bin/openshift-acme-exposer"]
